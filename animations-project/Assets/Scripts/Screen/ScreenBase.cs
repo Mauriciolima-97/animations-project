@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using NaughtyAttributes;
 using DG.Tweening;
 
@@ -20,6 +21,7 @@ namespace Screens
         public List<Transform> listofobjects;
         public List<Typper> listofphrases;
 
+        public Image uiBackGround;
         public bool startHided = false;
 
         [Header("Animation")]
@@ -36,14 +38,14 @@ namespace Screens
 
         [Button]
 
-        protected virtual void Show()
+        public virtual void Show()
         {
             ShowObjects();
             Debug.Log("Show");
         }
 
         [Button]
-        protected virtual void Hide()
+        public virtual void Hide()
         {
             Debug.Log("Show");
             HideObjects();
@@ -52,6 +54,7 @@ namespace Screens
         private void HideObjects()
         {
             listofobjects.ForEach(i => i.gameObject.SetActive(false));
+            uiBackGround.enabled = false;
         }
         private void ShowObjects()
         {
@@ -79,6 +82,7 @@ namespace Screens
         private void ForceShowObjects()
         {
             listofobjects.ForEach(i => i.gameObject.SetActive(true));
+            uiBackGround.enabled = true;
         }
     }
 }
