@@ -67,6 +67,7 @@ namespace Screens
                 obj.DOScale(0, animationDuration).From().SetDelay(i * delayBetweenObjects);
             }
             Invoke(nameof(StartType), delayBetweenObjects * listofobjects.Count);
+            uiBackGround.enabled = true;
         }
 
         private void StartType()

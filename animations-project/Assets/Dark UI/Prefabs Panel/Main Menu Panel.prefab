@@ -762,6 +762,8 @@ GameObject:
   - component: {fileID: 5028371659719729209}
   - component: {fileID: 3679554246123551761}
   - component: {fileID: 1568898947710659523}
+  - component: {fileID: 7756862012092468611}
+  - component: {fileID: 7073368619904396507}
   m_Layer: 5
   m_Name: Shop Button
   m_TagString: Untagged
@@ -884,6 +886,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   finalScale: 1.2
   scaleDuration: 0.1
+--- !u!114 &7756862012092468611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4540074070428165381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fbb27dbdcc1b4944973106d17e3c33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screentype: 2
+--- !u!114 &7073368619904396507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4540074070428165381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe07fa86e18c4845b01ae173019054c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particleSystem: {fileID: 0}
 --- !u!1 &4876996219008373525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,6 +1146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenType: 0
   listofobjects: []
+  listofphrases: []
+  uiBackGround: {fileID: 0}
   startHided: 0
   animationDuration: 0.5
   delayBetweenObjects: 0.5
