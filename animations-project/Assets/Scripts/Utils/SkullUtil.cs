@@ -1,56 +1,81 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using DG.Tweening;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public static class SkullUtil
 {
 #if UNITY_EDITOR
-    [UnityEditor.MenuItem("Ebac/Test")]
-
+    [MenuItem("Ebac/Exercicio")]
     public static void Test()
     {
-        Debug.Log("Test");
+        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cube.name = "EBAC Cube";
+        cube.transform.position = Vector3.zero;
 
-    }
-    [UnityEditor.MenuItem("Ebac/Test2 %g")]
-
-    public static void Test2()
-    {
-        Debug.Log("Test2");
+        Selection.activeGameObject = cube;
     }
 #endif
 
     public static SphereCollider AddTrigger(Transform parent, float radius = 1)
     {
-        GameObject _trigger = new GameObject("Trigger", typeof(SphereCollider));
-        _trigger.transform.SetParent(parent);
-        _trigger.transform.localPosition = Vector3.zero;
-        _trigger.transform.localScale = Vector3.one;
-        _trigger.layer = LayerMask.NameToLayer("Triggers");
+        GameObject trigger = new GameObject("Trigger", typeof(SphereCollider));
+        trigger.transform.SetParent(parent);
+        trigger.transform.localPosition = Vector3.zero;
+        trigger.transform.localScale = Vector3.one;
 
-        SphereCollider _triggerCollider = _trigger.GetComponent<SphereCollider>();
-        _triggerCollider.radius = radius;
-        _triggerCollider.isTrigger = true;
+        SphereCollider triggerCollider = trigger.GetComponent<SphereCollider>();
+        triggerCollider.radius = radius;
+        triggerCollider.isTrigger = true;
 
-        return _triggerCollider;
-
+        return triggerCollider;
     }
 
-    public static void Scale (this Transform t, float size = 1.2f)
+    public static void Scale(this Transform t, float size = 1.2f)
     {
-        t.transform.localScale = Vector3.one * size;
+        t.localScale = Vector3.one * size;
     }
+
     public static void Scale(this GameObject t, float size = 1.2f)
     {
         t.transform.localScale = Vector3.one * size;
     }
 
-    public static void ScaleVector(this Vector3 t, float size = 1.2f)
+    #region RANDOM STUFF
+
+    public static T GetRandom<T>(this T[] array)
     {
-       // t.transform.localScale = Vector3.one * size;
+        if (array.Length == 0)
+            return default;
+
+        return array[Random.Range(0, array.Length)];
     }
 
+    public static T GetRandom<T>(this List<T> list)
+    {
+        return list[Random.Range(0, list.Count)];
+    }
 
+    public static void Shuffle<T>(this List<T> list)
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            int randomIndex = Random.Range(i, list.Count);
+            (list[i], list[randomIndex]) = (list[randomIndex], list[i]);
+        }
+    }
+
+    public static void Shuffle<T>(this T[] array)
+    {
+        for (int i = 0; i < array.Length; i++)
+        {
+            int randomIndex = Random.Range(i, array.Length);
+            (array[i], array[randomIndex]) = (array[randomIndex], array[i]);
+        }
+    }
+
+    #endregion
 }

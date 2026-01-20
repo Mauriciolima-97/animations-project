@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Exercicio Ebac.unity
+    guid: e97a9f2ff8e273c49b234ecf0d8639ed
   m_configObjects: {}
